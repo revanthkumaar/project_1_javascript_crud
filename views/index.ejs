@@ -16,10 +16,27 @@
     <button type="submit">Submit</button>
   </form>
 
-  <%=tasks%>
+<ul class="tasks">
+  <% for(var i=0;i<tasks.length;i++) { %>
+
+    <li>
+
+        <span><% tasks[i].name %></span>
+
+        <span><% tasks[i].task %></span>
+
+
+    </li>
+
+<% } %>
+  
+</ul>
+
 
 
 </body>
 
 
 </html>
+
+
