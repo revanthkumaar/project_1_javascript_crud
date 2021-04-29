@@ -23,7 +23,7 @@ MongoClient.connect(connectionString,{useUnifiedTopology:true})
 
     firstServerApp.post('/tasksUpdate',(req,res) => {
         tasksCollection.insertOne(req.body)
-        .then(result = {
+        .then(result => {
             res.redirect('/')
         })
         .catch(error => console.error(error)) 
