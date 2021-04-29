@@ -18,9 +18,7 @@ MongoClient.connect(connectionString,{useUnifiedTopology:true})
     firstServerApp.use(bodyParser.urlencoded({extended:true}))
 
 //Routes
-//CREATE 
-
-
+    //CREATE 
     firstServerApp.post('/tasksUpdate',(req,res) => {
         tasksCollection.insertOne(req.body)
         .then(result => {
@@ -28,6 +26,15 @@ MongoClient.connect(connectionString,{useUnifiedTopology:true})
         })
         .catch(error => console.error(error)) 
     })
+
+    firstServerApp.get('/',(req,res) => {
+        const data = db.collection('tasks').find()
+        console.log(data)
+    })
+
+
+    firstServerApp.put(/*...*/)
+    firstServerApp.delete(/*...*/)
 
 
 })
