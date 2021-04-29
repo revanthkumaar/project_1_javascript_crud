@@ -43,7 +43,19 @@ MongoClient.connect(connectionString,{useUnifiedTopology:true})
     })
     //UPDATE
     firstServerApp.put('/tasks',(req,res) => {
-        console.log(req.body)
+        //find a value and then update it 
+        tasksCollection.findOneAndUpdate(
+            {name:'Revanth'}, 
+            {
+                $set: 
+                {name:req.body.name, 
+                task:req.body.task
+            }
+            },
+            {upsert: true}
+        )
+        .then(result => {console.log(result)})
+        .catch(error => console.error(error))
     })
 
 
