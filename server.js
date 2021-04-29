@@ -13,6 +13,7 @@ MongoClient.connect(connectionString,{useUnifiedTopology:true})
     console.log('connected to db')
     const db = client.db('my-tasks')
     const tasksCollection = db.collection('tasks')
+    firstServerApp.set('view engine','ejs')
 //Middlewares
     
     firstServerApp.use(bodyParser.urlencoded({extended:true}))
@@ -26,15 +27,16 @@ MongoClient.connect(connectionString,{useUnifiedTopology:true})
         })
         .catch(error => console.error(error)) 
     })
-
+    //READ 
     firstServerApp.get('/',(req,res) => {
-        const data = db.collection('tasks').find()
-        console.log(data)
+        //toArray
+        db.collection('tasks').find().toArray()
+        .then(results => {
+            res.render('index.ejs',{tasks:results})
+        })
+        .catch(error => console.error(error))
+        
     })
-
-
-    firstServerApp.put(/*...*/)
-    firstServerApp.delete(/*...*/)
 
 
 })
