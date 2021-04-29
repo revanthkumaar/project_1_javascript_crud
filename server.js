@@ -24,7 +24,7 @@ MongoClient.connect(connectionString,{useUnifiedTopology:true})
 
 //Routes
     //CREATE 
-    firstServerApp.post('/tasksUpdate',(req,res) => {
+    firstServerApp.post('/tasks',(req,res) => {
         tasksCollection.insertOne(req.body)
         .then(result => {
             res.redirect('/')
@@ -40,6 +40,10 @@ MongoClient.connect(connectionString,{useUnifiedTopology:true})
         })
         .catch(error => console.error(error))
         
+    })
+    //UPDATE
+    firstServerApp.put('/tasks',(req,res) => {
+        console.log(req.body)
     })
 
 

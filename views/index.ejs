@@ -8,9 +8,11 @@
 
 <body>
 
+    <script src="/main.js"></script>
+
     <h1>Task sheet</h1>
 
-  <form action="/taskUpdate" method="POST">
+  <form action="/tasks" method="POST">
     <input type="text" placeholder="name" name="name">
     <input type="text" placeholder="task" name="task">
     <button type="submit">Submit</button>
@@ -32,7 +34,12 @@
   
 </ul>
 
+<div>
+    <h2>Update the tasks here</h2>
 
+    <p>click to update</p>
+
+    <button id='update-button'>Replace/Update</button>
 
 </body>
 
