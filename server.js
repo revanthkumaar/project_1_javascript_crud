@@ -6,7 +6,7 @@ const bodyParser = require('body-parser')
 
 //db connection string and connection function
 const MongoClient = require('mongodb').MongoClient;
-connectionString = "mongodb+srv://revanth:revanthkumar@cluster0.w9ybg.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+connectionString = "mongodb+srv://revanth:<revanthkumar>@cluster0.w9ybg.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 
 MongoClient.connect(connectionString,{useUnifiedTopology:true})
 .then(client=> {
@@ -17,6 +17,10 @@ MongoClient.connect(connectionString,{useUnifiedTopology:true})
 //Middlewares
     
     firstServerApp.use(bodyParser.urlencoded({extended:true}))
+    
+    firstServerApp.use(bodyParser.urlencoded({ extended: true }))
+    firstServerApp.use(bodyParser.json())
+    firstServerApp.use(express.static('public'))
 
 //Routes
     //CREATE 
