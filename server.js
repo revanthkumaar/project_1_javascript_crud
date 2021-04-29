@@ -58,6 +58,18 @@ MongoClient.connect(connectionString,{useUnifiedTopology:true})
         .catch(error => console.error(error))
     })
 
+    //DELETE
+
+    firstServerApp.delete('/tasks',(req,res) => {
+        tasksCollection.deleteOne({name:req.body.name})
+        .then(result => {
+            if(result.deletedCount === 0){
+                return res.json('nothing to delete')
+            }
+        })
+        .catch(error => console.error(error))
+    })
+
 
 })
 

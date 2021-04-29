@@ -12,3 +12,21 @@ update.addEventListener('click', _ => {
         })
     })
 });
+
+const deleteButton = document.querySelector('#delete-button')
+deleteButton.addEventListener('click', _ => {
+    fetch('/tasks',{
+        method:'delete',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({
+            name:'Revanth'
+        })
+    })
+    .then(response => {
+        if(response.ok) return response.json
+    })
+    .then(data => {
+        window.location.reload()
+    })
+    .catch(err => {console.error(err)})
+})
